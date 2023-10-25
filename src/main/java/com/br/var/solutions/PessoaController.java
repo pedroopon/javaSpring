@@ -60,7 +60,7 @@ public class PessoaController {
             }
 
             log.info("Montando Objeto de retorno para o Front-end");
-            Object resumo = montarRespostaFrontEnd(imc, anoNascimento, impostoRenda);
+            PessoaResponse resumo = montarRespostaFrontEnd( pessoinha, imc, anoNascimento, impostoRenda, conversao);
 
 
             return ResponseEntity.ok(resumo);
@@ -76,11 +76,17 @@ public class PessoaController {
 
     }
 
-    private PessoaResponse montarRespostaFrontEnd(PessoaRequest pessoa, String imc, int anoNascimento, String impostoRenda) {
+    private PessoaResponse montarRespostaFrontEnd(PessoaRequest pessoa, String imc, int anoNascimento, String impostoRenda, String saldoEmDolar) {
         PessoaResponse response = new PessoaResponse();
 
         response.setNome(pessoa.getNome());
         response.setSalario(impostoRenda);
+        response.setAnoNascimento(anoNascimento);
+        response.setSaldoEmDolar(saldoEmDolar);
+        response.setImc(imc);
+        response.setAnoNascimento(anoNascimento);
+
+
 
         return response;
     }
